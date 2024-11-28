@@ -26,7 +26,7 @@ echo 'Deploying....'
             echo 'Post build condition running'
        
      }
-    faliure{
+    failure{
 
             echo 'Post Action if Build Failed'
     }
