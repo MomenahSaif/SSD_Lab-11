@@ -1,3 +1,5 @@
+flag true
+
 pipeline {
 agent any
 stages {
@@ -9,7 +11,14 @@ echo 'Building..'
 }
 stage('Test') {
 steps {
-echo 'Testing..'
+    when{
+     expression{
+
+               flag==false
+               }
+    }
+
+ echo 'Testing..'
 // Here you can define commands for your tests
 }
 }
