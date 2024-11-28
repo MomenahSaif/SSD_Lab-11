@@ -12,11 +12,16 @@ agent any
 stages {
 stage('Build') {
 steps {
-echo 'Building..'
-    echo "Building version ${NEW_VERSION}"
-    sh "nvm install"
-// Here you can define commands for your build
-}
+                echo 'Building..'
+                echo "Building version ${NEW_VERSION}"
+                // Load nvm and install node version
+                sh """
+                    export NVM_DIR="\$HOME/.nvm"
+                    [ -s "\$NVM_DIR/nvm.sh" ] && \. "\$NVM_DIR/nvm.sh"  # This loads nvm
+                    nvm install  # This will install the default Node.js version, or specify a version like nvm install 14
+                """
+                // Here you can define other build commands
+            }
 }
 stage('Test') {
 steps {
